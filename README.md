@@ -4,7 +4,7 @@ A Python application built on top of a PostgreSQL database of bank transactions,
 
 Dataset
 
-bank_transactions_data_2.csv — ~2,512 bank transaction records, imported into a transactions table in the bank_transactions database via pgAdmin's Import/Export tool.
+bank_transactions_data_2.csv ~2,512 bank transaction records, imported into a transactions table in the bank_transactions database via pgAdmin's Import/Export tool.
 
 1. Setup
 Install PostgreSQL and create the database (already done via pgAdmin):
@@ -17,6 +17,7 @@ bash
    venv\Scripts\activate        # Windows
    pip install psycopg2-binary pytest
 In each script, replace PUT_YOUR_PASSWORD_HERE with your PostgreSQL password (or better: set it as an environment variable — see note below).
+
 2. Table schema
 sql
 CREATE TABLE transactions (
@@ -37,6 +38,7 @@ CREATE TABLE transactions (
     account_balance            NUMERIC(12,2),
     previous_transaction_date  TIMESTAMP
 );
+
 3. Files
 File	Purpose
 test_connection.py	Confirms Python can connect to the database
@@ -46,6 +48,7 @@ insert_with_transaction_handling.py	Same insert, wrapped in try/except with COMM
 insert_with_logging.py	Same as above, plus logging of every operation/error to db_operations.log
 test_transactions.py	Integration tests (pytest) covering insert, duplicate-rejection/rollback, and retrieval
 index_demo.py	Creates an index on account_id and shows the query plan before/after via EXPLAIN ANALYZE
+
 4. Running things
 bash
 # test the connection
@@ -68,6 +71,7 @@ pytest -v
 
 # see the index / EXPLAIN ANALYZE demonstration
 python index_demo.py
+
 5. What each task requirement maps to
 Requirement	Where
 Create DB	bank_transactions database (created in pgAdmin)
@@ -80,6 +84,7 @@ Transaction handling (COMMIT/ROLLBACK)	insert_with_transaction_handling.py
 Logging	insert_with_logging.py, writes to db_operations.log
 Integration tests	test_transactions.py
 Index + EXPLAIN/EXPLAIN ANALYZE	index_demo.py
+
 6. Notes
 Passwords are currently hardcoded as placeholders for simplicity during development. In a real deployment these should come from environment variables instead of being committed to source control.
 The primary key on transaction_id is what makes duplicate inserts fail — this is what's demonstrated in the rollback example.
