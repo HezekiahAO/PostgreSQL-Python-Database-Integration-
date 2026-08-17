@@ -114,4 +114,4 @@ A parameterised query is a secure way to write database queries by keeping your 
 
 
 Image of the changes after optimising with EXPLAIN ANALYZE (Run index_demo.py)
-![EXPLAIN ANALYZE](image.png)
+![alt text](image-1.png)
