@@ -110,8 +110,3 @@ A parameterised query is a secure way to write database queries by keeping your 
 - Passwords are currently hardcoded as placeholders for simplicity during
   development. In a real deployment these should come from environment
   variables instead of being committed to source control.
-
-
-
-Image of the changes after optimising with EXPLAIN ANALYZE (Run index_demo.py)
-![alt text](image-1.png)
