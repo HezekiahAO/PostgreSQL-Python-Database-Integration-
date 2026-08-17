@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="Hezekiah1!",
+    password="YOUR_PASSWORD",
     host="localhost",
     port="5432",
 )
