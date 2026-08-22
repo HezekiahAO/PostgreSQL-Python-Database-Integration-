@@ -8,12 +8,14 @@ use %s placeholders and pass the actual values separately. psycopg2 handles
 escaping them safely.
 """
 
+import os
+
 import psycopg2
 
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )
@@ -64,7 +66,7 @@ def insert_transaction(transaction):
 # --- Example usage ---
 if __name__ == "__main__":
     new_transaction = {
-        "transaction_id": "TX999001",
+        "transaction_id": "TX999005",
         "account_id": "AC00999",
         "transaction_amount": 250.75,
         "transaction_date": "2025-01-15 10:30:00",

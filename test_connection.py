@@ -5,11 +5,13 @@ Run: python test_connection.py
 """
 
 import psycopg2
+import os
+from dotenv import load_dotenv
 
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )

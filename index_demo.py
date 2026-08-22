@@ -8,11 +8,16 @@ exactly the kind of lookup an index is meant to speed up.
 """
 
 import psycopg2
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )

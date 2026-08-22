@@ -10,12 +10,15 @@ if someone searched for something malicious like:
 That's what "safe from SQL injection" actually means in practice.
 """
 
+import os
+
 import psycopg2
+from dotenv import load_dotenv
 
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )

@@ -6,13 +6,17 @@ to confirm insert/retrieve/rollback behavior actually works.
 Run with: pytest -v
 """
 
+import os
+
 import pytest
 import psycopg2
+from dotenv import load_dotenv
+
 
 DB_CONFIG = dict(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )

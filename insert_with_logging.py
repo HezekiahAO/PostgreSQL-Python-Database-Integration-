@@ -6,7 +6,9 @@ instead of just printed to the screen and lost.
 """
 
 import logging
+import os
 import psycopg2
+from dotenv import load_dotenv
 
 # --- Logging setup ---
 # This writes to a file AND prints to the console at the same time.
@@ -23,7 +25,7 @@ logger = logging.getLogger(__name__)
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )

@@ -9,12 +9,14 @@ partway through, ROLLBACK undoes everything so the database is never left
 in a half-finished state.
 """
 
+import os
 import psycopg2
+from dotenv import load_dotenv
 
 conn = psycopg2.connect(
     dbname="bank_transactions",
     user="postgres",
-    password="YOUR_PASSWORD",
+    password=os.environ.get("POSTGRES_PASSWORD"),
     host="localhost",
     port="5432",
 )
